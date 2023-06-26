@@ -1,4 +1,4 @@
-﻿using AdvancedSharpAdbClient;
+﻿using System.Diagnostics;
 
 namespace AdvancedSharpAdbClientTest
 {
@@ -8,9 +8,9 @@ namespace AdvancedSharpAdbClientTest
         {
             Console.WriteLine("Hello, World!");
 
-            var client = new AdbClient();
-            client.Connect("127.0.0.1:62001");
-            var device = client.GetDevices().FirstOrDefault(); // Get first connected device
+            ProcessStartInfo startInfo = new ProcessStartInfo() { FileName = "/bin/bash", Arguments = "adb", };
+            Process proc = new Process() { StartInfo = startInfo, };
+            proc.Start();
         }
     }
 }
